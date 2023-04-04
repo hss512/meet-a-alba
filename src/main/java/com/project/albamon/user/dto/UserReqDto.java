@@ -12,11 +12,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserReqDto {
 
-    private String userId;
+    private Long userId;
 
     private String username;
 
     private String password;
 
     private Role role;
+
+    private String tags;
 }

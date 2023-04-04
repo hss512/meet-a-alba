@@ -15,9 +15,9 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserResDto getUser(String userId) {
+    public UserResDto getUser(Long userId) {
 
-        User getUser = userRepository.findByUserId(Long.parseLong(userId));
+        User getUser = userRepository.findByUserId(userId);
 
         return new UserResDto(getUser);
     }
@@ -25,7 +25,7 @@ public class UserService {
     public UserResDto signupUser(UserReqDto userReqDto) {
 
         User user = User.builder()
-                .userId(Long.parseLong(userReqDto.getUserId()))
+                .id(userReqDto.getUserId())
                 .password(userReqDto.getPassword())
                 .username(userReqDto.getUsername())
                 .role(userReqDto.getRole())

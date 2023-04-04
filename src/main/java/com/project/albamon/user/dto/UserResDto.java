@@ -18,7 +18,7 @@ public class UserResDto {
     private Role role;
 
     public UserResDto(User user){
-        this.userId = user.getUserId();
+        this.userId = user.getId();
         this.username = user.getUsername();
         this.role = user.getRole();
     }
