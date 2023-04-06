@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResDto {
 
-    private Long userId;
+    private Long id;
 
     private String username;
 
     private Role role;
 
     public UserResDto(User user){
-        this.userId = user.getId();
+        this.id = user.getId();
         this.username = user.getUsername();
         this.role = user.getRole();
     }

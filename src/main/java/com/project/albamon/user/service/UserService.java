@@ -1,5 +1,7 @@
 package com.project.albamon.user.service;
 
+import com.project.albamon.common.exception.CustomException;
+import com.project.albamon.common.exception.StatusCode;
 import com.project.albamon.user.domain.User;
 import com.project.albamon.user.dto.UserReqDto;
 import com.project.albamon.user.dto.UserResDto;
@@ -17,7 +19,7 @@ public class UserService {
 
     public UserResDto getUser(Long userId) {
 
-        User getUser = userRepository.findByUserId(userId);
+        User getUser = userRepository.findById(userId).orElseThrow(() -> new CustomException(StatusCode.NOT_FOUND_USER));
 
         return new UserResDto(getUser);
     }
@@ -38,15 +40,15 @@ public class UserService {
 
     public void updateUser(Long userId, UserReqDto userReqDto) {
 
-        User findUser = userRepository.findByUserId(userId);
+        User getUser = userRepository.findById(userId).orElseThrow(() -> new CustomException(StatusCode.NOT_FOUND_USER));
 
-        findUser.updateUser(userReqDto);
+        getUser.updateUser(userReqDto);
     }
 
     public void deleteUser(Long userId) {
 
-        User findUser = userRepository.findByUserId(userId);
+        User getUser = userRepository.findById(userId).orElseThrow(() -> new CustomException(StatusCode.NOT_FOUND_USER));
 
-        userRepository.delete(findUser);
+        userRepository.delete(getUser);
     }
 }
