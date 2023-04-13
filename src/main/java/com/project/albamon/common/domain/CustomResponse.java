@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class CustomResponse <T>{
 
     private int status;
+
     private String code;
+
     private T data;
 }
